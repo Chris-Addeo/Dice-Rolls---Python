@@ -1,0 +1,200 @@
+from random import randint
+
+#Ask user what dice they want
+dice=0
+while dice<1:
+    dice=int(input("How many sides do you want on your dice? (4, 6, or 8): "))
+    if dice == 4 or dice == 6 or dice == 8:
+        print("Thanks, here we go!")
+    else:
+        print("That's not a valid number of sides. Pick again.")
+        dice-=dice
+
+#Other variables (Even, odd, High, High/Low, Sum Value, Total Sums):
+doubles=0
+evens=0
+odds=0
+highs=0
+hl=0
+sv=0
+sum1=0
+sum2=0
+
+#Start rolling the die!
+counter=1
+while counter>0:
+    #If they pick 4
+    if dice==4:
+        #Counter
+        counter+=1
+        
+        #Roll the dice
+        r1=randint(1,4)
+        r2=randint(1,4)
+        print("die #1 is *", r1, "* and die #2 is *", r2, "*", sep="")
+
+        #Sums
+        sum1=sum1+r1
+        sum2=sum2+r2
+        
+        #Doubles
+        if r1==r2:
+            print("Doubles!")
+        else:
+            continue
+        
+        #Evens and Odds
+        if r1%2==0 and r2%2==0:
+            print("Evens!")
+            evens+=1
+        elif r1%2!=0 and r1%2!=0:
+            print("Odds!")
+            odds+=1
+        else:
+            continue
+        
+        #Highs, Snake Eyes, and high lows
+        if r1==4 and r2==4:
+            print("Highs!")
+            highs+=1
+        elif r1==1 and r2==1:
+            print("Snake Eyes!")
+            break
+        elif r1==1 and r2==4:
+            print("High/Low!")
+            hl+=1
+        elif r1==4 and r2==1:
+            print("High/Low!")
+            hl+=1
+        else:
+            continue
+        
+        #Sum Value and Sums
+        if r1+r2==dice:
+            print("Sum value is the same as the size value!")
+            sv+=1
+        else:
+            continue
+        sum1=sum1+r1
+        sum2=sum2+r2
+
+    #If they pick 6  
+    elif dice==6:
+        #Counter
+        counter+=1
+        
+        #Roll the dice
+        r1=randint(1,6)
+        r2=randint(1,6)
+        print("die #1 is *", r1, "* and die #2 is *", r2, "*", sep="")
+
+        #Sums
+        sum1=sum1+r1
+        sum2=sum2+r2
+        
+        #Doubles
+        if r1==r2:
+            print("Doubles!")
+        else:
+            continue
+        
+        #Evens and Odds
+        if r1%2==0 and r2%2==0:
+            print("Evens!")
+            evens+=1
+        elif r1%2!=0 and r1%2!=0:
+            print("Odds!")
+            odds+=1
+        else:
+            continue
+        
+        #Highs, Snake Eyes, and high lows
+        if r1==6 and r2==6:
+            print("Highs!")
+            highs+=1
+        elif r1==1 and r2==1:
+            print("Snake Eyes!")
+            break
+        elif r1==1 and r2==6:
+            print("High/Low!")
+            hl+=1
+        elif r1==6 and r2==1:
+            print("High/Low!")
+            hl+=1
+        else:
+            continue
+        
+        #Sum Value and Sums
+        if r1+r2==dice:
+            print("Sum value is the same as the size value!")
+            sv+=1
+        else:
+            continue
+        sum1=sum1+r1
+        sum2=sum2+r2
+        
+    #If they pick 8
+    else:
+        #Counter
+        counter+=1
+        
+        #Roll the dice
+        r1=randint(1,8)
+        r2=randint(1,8)
+        print("die #1 is *", r1, "* and die #2 is *", r2, "*", sep="")
+        
+        #Sums
+        sum1=sum1+r1
+        sum2=sum2+r2
+        
+        #Doubles
+        if r1==r2:
+            print("Doubles!")
+        else:
+            continue
+        
+        #Evens and Odds
+        if r1%2==0 and r2%2==0:
+            print("Evens!")
+            evens+=1
+        elif r1%2!=0 and r1%2!=0:
+            print("Odds!")
+            odds+=1
+        else:
+            continue
+        
+        #Highs, Snake Eyes, and high lows
+        if r1==8 and r2==8:
+            print("Highs!")
+            highs+=1
+        elif r1==1 and r2==1:
+            print("Snake Eyes!")
+            break
+        elif r1==1 and r2==8:
+            print("High/Low!")
+            hl+=1
+        elif r1==8 and r2==1:
+            print("High/Low!")
+            hl+=1
+        else:
+            continue
+        
+        #Sum Value
+        if r1+r2==dice:
+            print("Sum value is the same as the size value!")
+            sv+=1
+        else:
+            continue
+
+
+#Results output
+print("You finally rolled snake eyes on roll #", counter)
+
+print("Along the way you rolled DOUBLES", doubles, "times. (", 100*doubles/counter, "% of all rolls were doubles)")
+print("Along the way you rolled TWO HIGH VALUES", highs, "times (", 100*highs/counter, "% of all rolls were two high values)")
+print("Along the way you rolled TWO EVENS", evens, "times. (", 100*evens/counter, "% of all rolls were two evens)")
+print("Along the way you rolled TWO ODDS", odds, "times. (", 100*odds/counter, "% of all rolls were two odds)")
+print("Along the way you rolled HIGH / LOW", hl, "times. (", 100*hl/counter, "% of all rolls were high/low)")
+print("Along the way you rolled A SUM VALUE", sv, "times. (", 100*sv/counter, "% of all rolls were a sum value)")
+print("Average roll for die #1:", sum1/counter)
+print("Average roll for die #2:", sum2/counter)
